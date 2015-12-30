@@ -56,6 +56,9 @@ def time_querry(querry_string, sqlContext, method=0):
     return [ave_t, std, diff, n]
 
 def main(n_part, hdfs_path):
+    print "********************\n*"
+    print "* Start main\n*"
+    print "********************"
     conf = SparkConf().setAppName("Benchmark Spark SQL")
     sc = SparkContext(conf = conf)
     sqlContext = SQLContext(sc)
@@ -63,17 +66,21 @@ def main(n_part, hdfs_path):
     df = sqlContext.createDataFrame(rowsRDD).cache()
     df.count()
     df.registerTempTable("msd_table")
+    print "********************\n*"
+    print "* Start querres\n*"
+    print "********************"
     [ave_t1, std1, dt1, n1] = time_querry("SELECT * FROM msd_table WHERE msd_table.artist_name = 'Taylor Swift'", sqlContext)
     [ave_t2, std2, dt2, n2] = time_querry("SELECT COUNT(*) FROM msd_table WHERE msd_table.artist_name = 'Taylor Swift'", sqlContext, method=1)
     [ave_t3, std3, dt3, n3] = time_querry("SELECT * FROM msd_table WHERE msd_table.artist_hotness > 0.75", sqlContext)
     [ave_t4, std4, dt4, n4] = time_querry("SELECT COUNT(*) FROM msd_table WHERE msd_table.artist_hotness > 0.75", sqlContext, method=1)
     if n1 != n2:
-        print "Error, counts disagree for the number of T.S. songs!"
+        print "\t!!!!Error, counts disagree for the number of T.S. songs!"
     if n3 != n4:
-        print "Error, counts disagree for the number of high paced songs!"
-
+        print "\t!!!!Error, counts disagree for the number of high paced songs!"
+    print "********************\n*"
+    print "* Results"
     print "\t".join(map(lambda x: str(x), [ave_t1, std1, dt1, ave_t2, std2, dt2, ave_t3, std3, dt3, ave_t4, std4, dt4]))
-
+    print "********************"
 
 
 if __name__ == "__main__":
