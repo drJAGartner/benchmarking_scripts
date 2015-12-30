@@ -5,6 +5,7 @@
 # This code is taken verbatum from
 # the tensor flow tutorial:
 # https://www.tensorflow.org/versions/master/tutorials/mnist/pros/index.html
+#
 ###################################
 
 import tensorflow as tf

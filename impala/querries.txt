@@ -1,0 +1,39 @@
+## Create Table
+create EXTERNAL TABLE [table name]
+(
+id STRING,
+sample_rate INT,
+artist_familiarity FLOAT,
+artist_hotness FLOAT,
+artist_name STRING,
+audio_md5 STRING,
+danceability FLOAT,
+duration FLOAT,
+end_of_fade_in FLOAT,
+energy FLOAT,
+key INT,
+key_confidence FLOAT,
+loudness FLOAT,
+mode FLOAT,
+mode_confidence FLOAT,
+release STRING,
+song_hotttness STRING,
+song_id STRING,
+start_of_fade_out FLOAT,
+tempo FLOAT,
+time_signature FLOAT,
+time_signature_confidence FLOAT,
+title STRING,
+year INT
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+LOCATION ‘[HDFS PATH]’
+
+##Compute Stats
+COMPUTE STATS [table name]
+
+## Count all songs (1,000,000)
+SELECT COUNT(*) FROM [table name]
+
+## Query the number of Taylor Swift songs in the DB (53)
+SELECT COUNT(*) FROM [table name] WHERE [table name].artist_name = "Taylor Swift";
