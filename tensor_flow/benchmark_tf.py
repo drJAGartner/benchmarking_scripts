@@ -2,9 +2,16 @@
 #
 # Benchmark Tensor Flow
 # J. Gartner
-# This code is taken verbatum from
-# the tensor flow tutorial:
+#
+# Train gradient descent and
+# convoluted nueral network
+# models on the MINST handwritten
+# number dataset
+#
+# THIS CODE IS TAKEN VERBATUM
+# FROM THE TENSOR FLOW TUTORIAL:
 # https://www.tensorflow.org/versions/master/tutorials/mnist/pros/index.html
+# I TAKE NO CREDIT AS THE CODE'S AUTHOR.
 #
 ###################################
 

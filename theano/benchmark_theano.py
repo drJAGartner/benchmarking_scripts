@@ -258,6 +258,7 @@ def sgd_optimization_mnist(learning_rate=0.13, n_epochs=1000,
                  http://www.iro.umontreal.ca/~lisa/deep/data/mnist/mnist.pkl.gz
 
     """
+    start_time = timeit.default_timer()
     datasets = load_data(dataset)
 
     train_set_x, train_set_y = datasets[0]
@@ -333,6 +334,8 @@ def sgd_optimization_mnist(learning_rate=0.13, n_epochs=1000,
         }
     )
     # end-snippet-3
+    end_time = timeit.default_timer()
+    print "Prep time: ", end_time-start_time
 
     ###############
     # TRAIN MODEL #
